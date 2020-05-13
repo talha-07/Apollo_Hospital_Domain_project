@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'apollaApp/base.html'%}
+{%block body_block%}
+{% if list_pat %}
+<table border='2'>
+  <thead>
+    <th>P NAME</th>
+    <th>P NUMBER</th>
+    <th>P MARKS</th>
+    <th>P ACTION</th>
+    </thead>
+    {% for patient in list_pat%}
+      <tr>
+        <td>{{patient.pname}}</td>
+        <td>{{patient.pno}}</td>
+        <td>{{patient.pmarks}}</td>
+        <td><a href="/update/{{patient.id}}">UPDATE</a> &nbsp;
+          <a href="/delete/{{patient.id}}">DELETE</a></td>
+      </tr>
+    {% endfor%}
+  </table>
+    {% else%}
+    print('TABLE NOT PRESENT')
+
+{% endif %}
+<a href="/create" class="btn btn-primary btn-large">ADD PATIENT</a>
+
+{% endblock%}
